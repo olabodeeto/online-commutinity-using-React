@@ -1,13 +1,63 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+} */
+
+.input {
+  @apply w-full py-4 px-2 border-2  rounded-lg outline-none;
+}
+.countryContainer {
+  @apply w-full py-2  rounded-lg outline-none;
+}
+
+.postModal {
+  @apply justify-center top-14  w-full fixed z-50 h-screen p-5 bg-gray-800 bg-opacity-40;
+}
+.btn {
+  @apply w-2/12 py-3 text-center text-lg rounded-lg;
+}
+
+.btn-full {
+  @apply w-full py-4 text-center text-white font-bold text-lg rounded-lg;
+}
+
+.postfeed {
+  @apply flex bg-white py-4  m-auto rounded-lg;
+}
+
+.postAvatar {
+  @apply mx-2 w-16 h-16 object-cover rounded-full;
+}
+
+.lgHeadAvatar {
+  @apply mx-2 w-10 h-10 object-cover rounded-full;
+}
+.postUsername {
+  @apply mb-4 text-gray-800;
+}
+.postBlock {
+  @apply m-auto rounded-lg p-2 w-11/12 mx-2;
+}
+
+.postbtn {
+  @apply w-10 h-10 fixed z-20 rounded-full 
+  bg-purple-600 text-white bottom-20 right-2 
+  flex justify-center items-center text-4xl;
+}
+
+.leftList {
+  @apply py-10 px-5 text-gray-500;
+}
+
+.leftList p {
+  @apply py-10;
 }

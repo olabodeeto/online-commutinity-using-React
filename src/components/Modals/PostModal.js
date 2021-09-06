@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { postFormContext } from "../../store/PostformProvider";
 import { Cross } from "akar-icons";
 import { Image } from "akar-icons";

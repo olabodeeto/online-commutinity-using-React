@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { postFormContext } from "../../../store/PostformProvider";
 import bluelogo from "../../assets/img/bluelogo.png";
 import searchicon from "../../assets/img/search.png";

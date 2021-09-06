@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { postFormContext } from "../../../store/PostformProvider";
 import profileImg from "../../assets/img/profile.jpg";
 import userImg from "../../assets/img/user1.jpg";

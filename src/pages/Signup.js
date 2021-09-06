@@ -7,22 +7,58 @@ import { LoginbtnDesktop } from "../components/btns";
 import Select from "react-select";
 import countryList from "react-select-country-list";
 import { customStyles } from "../components/SelectStyle";
-import { EyeClosed } from "akar-icons";
+import { useFormik } from "formik";
 
 export default function Signup() {
   const [value, setValue] = useState("");
+  const [country, setcountry] = useState("");
+
   const options = useMemo(() => countryList().getData(), []);
+  const formik = useFormik({
+    initialValues: {
+      fullName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      networkID: "",
+    },
+    onSubmit: (values) => {
+      const { fullName, email, password, confirmPassword, networkID } = values;
+      const data = [
+        fullName,
+        email,
+        password,
+        confirmPassword,
+        networkID,
+        country,
+      ];
+
+      console.log(data);
+    },
+    validate: (values) => {
+      const errors = {};
+      if (values.password !== values.confirmPassword) {
+        errors.confirmPassword = "Password not match";
+      }
+      if (values.fullName.length < 5) {
+        errors.fullName = "Name too short";
+      }
+
+      if (values.password.length < 8) {
+        errors.password = "Password too short";
+      }
+      if (values.email.lenght < 6) {
+        errors.email = "Invalid email";
+      }
+
+      return errors;
+    },
+  });
 
   const changeHandler = (value) => {
     setValue(value);
-    console.log(value.label);
+    setcountry(value.label);
   };
-
-  const countryOption = options.map((op) => (
-    <option key={op.label} onClick={() => console.log("heey")}>
-      {op.label}
-    </option>
-  ));
 
   return (
     <>
@@ -60,36 +96,71 @@ export default function Signup() {
               </div>
             </div>
           </div>
-          {/* left side */}
+          {/* right side */}
           <div className=" w-1/2 h-screen bg-gray-100">
             <div className="mt-40 flex justify-center">
-              <form className="m-10 mt-2 max-w-lg ">
+              <form
+                className="m-10 mt-2 max-w-lg "
+                onSubmit={formik.handleSubmit}
+              >
                 <input
                   className="input mb-2"
                   type="text"
+                  name="fullName"
                   placeholder="Full Name"
                   required
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.fullName}
                 />
+                {formik.touched.fullName && formik.errors.fullName ? (
+                  <p className="text-red-500">{formik.errors.fullName}</p>
+                ) : null}
                 <input
                   className="input mb-2"
                   type="email"
+                  name="email"
                   placeholder="Email"
                   required
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.email}
                 />
+
+                {formik.touched.email && formik.errors.email ? (
+                  <p className="text-red-500">{formik.errors.email}</p>
+                ) : null}
 
                 <input
                   className="input mb-2"
                   type="password"
+                  name="password"
                   placeholder="Password"
                   required
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.password}
                 />
+                {formik.touched.password && formik.errors.password ? (
+                  <p className="text-red-500">{formik.errors.password}</p>
+                ) : null}
 
                 <input
                   className="input"
                   type="password"
-                  placeholder="Confirm assword"
+                  name="confirmPassword"
+                  placeholder="Confirm password"
                   required
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.confirmPassword}
                 />
+                {formik.touched.confirmPassword &&
+                formik.errors.confirmPassword ? (
+                  <p className="text-red-500">
+                    {formik.errors.confirmPassword}
+                  </p>
+                ) : null}
 
                 <div className="bg-white mt-2  mb-2">
                   <Select
@@ -106,9 +177,11 @@ export default function Signup() {
                   className="input"
                   type="text"
                   placeholder="Network ID (optional)"
-                  required
+                  name="networkID"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
                 />
-                <Loginbtn title="Creat account" />
+                <Loginbtn title="Creat account" type="submit" />
               </form>
             </div>
           </div>
@@ -127,25 +200,66 @@ export default function Signup() {
         </div>
 
         <div className="mt-20">
-          <form className="m-10 text-gray-400">
+          <form className="m-10 text-gray-400" onSubmit={formik.handleSubmit}>
             <input
               className="input mb-2"
               type="text"
               placeholder="Full Name"
               required
+              name="fullName"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.fullName}
             />
+            {formik.touched.fullName && formik.errors.fullName ? (
+              <p className="text-red-500">{formik.errors.fullName}</p>
+            ) : null}
+
             <input
               className="input mb-2"
               type="email"
               placeholder="Email"
               required
+              name="email"
+              placeholder="Email"
+              required
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
             />
+
+            {formik.touched.email && formik.errors.email ? (
+              <p className="text-red-500">{formik.errors.email}</p>
+            ) : null}
+
             <input
               className="input"
               type="password"
+              name="password"
               placeholder="Password"
               required
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
             />
+            {formik.touched.password && formik.errors.password ? (
+              <p className="text-red-500">{formik.errors.password}</p>
+            ) : null}
+
+            <input
+              className="input"
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm assword"
+              required
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.confirmPassword}
+            />
+            {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
+              <p className="text-red-500">{formik.errors.confirmPassword}</p>
+            ) : null}
+
             <div className="bg-white mt-2 mb-2">
               <Select
                 options={options}
@@ -161,7 +275,10 @@ export default function Signup() {
               className="input"
               type="text"
               placeholder="Network ID (optional)"
-              required
+              name="networkID"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.networkID}
             />
             <Loginbtn title="Creat account" />
           </form>

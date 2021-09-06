@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import PublicPages from "./pages/PublicPages";
 import Authpages from "./AuthPages/Authpages";
 function App() {
-  const [isLogin, setisLogin] = useState(false);
+  const [isLogin] = useState(false);
 
   return (
     <>

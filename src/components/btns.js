@@ -1,19 +1,19 @@
 import React from "react";
 
 export function Defaultbtn({ title }) {
+  return <button className="default-btn px-12">{title}</button>;
+}
+
+export function Outlinetbtn({ title }) {
+  return <button className="btn btn-outline px-16">{title}</button>;
+}
+
+export function Loginbtn({ title, type }) {
   return (
-    <button
-      className="btn  bg-gradient-to-r 
-    from-purple-600 to-purple-800 text-yellow-200 border-2
-    border-purple-600"
-    >
+    <button type={type} className="btn-full mt-5 bg-purple-600">
       {title}
     </button>
   );
-}
-
-export function Loginbtn({ title }) {
-  return <button className="btn-full mt-5 bg-purple-600">{title}</button>;
 }
 
 export function LoginbtnDesktop({ title }) {

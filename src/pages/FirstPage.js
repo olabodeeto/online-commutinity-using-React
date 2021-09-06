@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../pages/assets/img/logo.png";
 import iconarrow from "../pages/assets/img/arrow.png";
 import heroimg from "../pages/assets/img/hero.png";
-import { Defaultbtn, Loginbtn } from "../components/btns";
+import { Defaultbtn, Loginbtn, Outlinetbtn } from "../components/btns";
 
 export default function FirstPage() {
   return (
@@ -29,17 +29,12 @@ export default function FirstPage() {
                   The Entrepreneurs Directory
                 </p>
 
-                <div className="flex gap-5 mt-20">
+                <div className="flex gap-5 mt-20  w-8/12">
                   <Link to="/register">
                     <Defaultbtn title="Get Started" />
                   </Link>
                   <Link to="/login">
-                    <button
-                      className="btn text-purple-600 border-2
-                   border-purple-600"
-                    >
-                      Log in
-                    </button>
+                    <Outlinetbtn title="Log in" />
                   </Link>
                 </div>
               </div>

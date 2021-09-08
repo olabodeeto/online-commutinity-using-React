@@ -66,7 +66,7 @@ export default function Login() {
         </div>
       </div>
 
-      <div className="md:hidden">
+      <div className="md:hidden pb-14">
         <div className="mt-4">
           <div className="md:hidden">
             <div className="w-full relative py-5 px-5">

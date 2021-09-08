@@ -49,7 +49,7 @@ export default function FirstPage() {
       </div>
 
       {/* Mobile views */}
-      <div className="md:hidden">
+      <div className="md:hidden pb-14">
         <div className="w-full relative py-5 px-5">
           <img className="w-12" src={logo} alt="" />
           <span className="absolute top-8 left-16 font-bold">pluggily</span>

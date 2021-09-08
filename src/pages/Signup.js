@@ -181,7 +181,7 @@ export default function Signup() {
       </div>
 
       {/* mobile views */}
-      <div className="md:hidden">
+      <div className="md:hidden py-10">
         <div className="ml-12 mt-20 text-4xl font-semibold text-gray-700">
           <p className="text-sm text-red-800">The Entrepreneurs directory</p>
           <span className="block">Join the </span>

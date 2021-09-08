@@ -11,7 +11,7 @@ import { useFormik } from "formik";
 
 export default function Signup() {
   const [value, setValue] = useState("");
-  const [country, setcountry] = useState("");
+  // const [country, setcountry] = useState("");
 
   const options = useMemo(() => countryList().getData(), []);
   const formik = useFormik({
@@ -24,14 +24,7 @@ export default function Signup() {
     },
     onSubmit: (values) => {
       const { fullName, email, password, confirmPassword, networkID } = values;
-      const data = [
-        fullName,
-        email,
-        password,
-        confirmPassword,
-        networkID,
-        country,
-      ];
+      const data = [fullName, email, password, confirmPassword, networkID];
 
       console.log(data);
     },
@@ -55,9 +48,8 @@ export default function Signup() {
     },
   });
 
-  const changeHandler = (value) => {
-    setValue(value);
-    setcountry(value.label);
+  const changeHandler = (formvalue) => {
+    setValue(formvalue);
   };
 
   return (
@@ -218,10 +210,8 @@ export default function Signup() {
             <input
               className="input mb-2"
               type="email"
-              placeholder="Email"
-              required
               name="email"
-              placeholder="Email"
+              placeholder="Your email"
               required
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -233,7 +223,7 @@ export default function Signup() {
             ) : null}
 
             <input
-              className="input"
+              className="input mb-2"
               type="password"
               name="password"
               placeholder="Password"
